@@ -54,6 +54,10 @@ async function run() {
     
           });
           app.get('/orders',async(req,res)=>{
+            const queray={}
+            const cursor=Orderscollection.find(queray)
+            const Orders=await cursor.toArray()
+            res.send(Orders)
          
     
     
