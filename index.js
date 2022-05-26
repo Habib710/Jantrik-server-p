@@ -45,6 +45,14 @@ async function run() {
 
 
         });
+        app.get('/profile',async (req,res)=>{
+            const queray={}
+            const cursor=Myprofilecollection.find(queray)
+            const data=await cursor.toArray()
+            res.send(data)
+
+
+        });
         app.post('/reviews',async(req,res)=>{
           const newreviews=req.body;
           
