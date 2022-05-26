@@ -44,6 +44,15 @@ async function run() {
 
 
         });
+        app.post('/reviews',async(req,res)=>{
+          const newreviews=req.body;
+          
+            const result= await Reviewscollection.insertOne(newreviews);
+            res.send(result)
+  
+        });
+
+        
         app.get('/alltool/:id',async(req,res)=>{
             const id=req.params.id;
             const query={_id:(id)};
