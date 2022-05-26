@@ -25,11 +25,20 @@ async function run() {
 
         const collection = client.db("Jantrik").collection("Tools");
         const Orderscollection = client.db("Orders").collection("Data");
+        const Reviewscollection = client.db("Allreviews").collection("Reviews");
         
 
         app.get('/alltool',async (req,res)=>{
             const queray={}
             const cursor=collection.find(queray)
+            const data=await cursor.toArray()
+            res.send(data)
+
+
+        });
+        app.get('/reviews',async (req,res)=>{
+            const queray={}
+            const cursor=Reviewscollection.find(queray)
             const data=await cursor.toArray()
             res.send(data)
 
