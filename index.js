@@ -26,6 +26,7 @@ async function run() {
         const collection = client.db("Jantrik").collection("Tools");
         const Orderscollection = client.db("Orders").collection("Data");
         const Reviewscollection = client.db("Allreviews").collection("Reviews");
+        const Myprofilecollection = client.db("Myprofile").collection("prolifedata");
         
 
         app.get('/alltool',async (req,res)=>{
@@ -48,6 +49,13 @@ async function run() {
           const newreviews=req.body;
           
             const result= await Reviewscollection.insertOne(newreviews);
+            res.send(result)
+  
+        });
+        app.post('/profile',async(req,res)=>{
+          const myinfo=req.body;
+          
+            const result= await Myprofilecollection.insertOne(myinfo);
             res.send(result)
   
         });
