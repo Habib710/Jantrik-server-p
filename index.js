@@ -5,6 +5,7 @@ require('dotenv').config();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const port =process.env.PORT || 3300 ;
 
+
 // midelware.......
 app.use(cors())
 app.use(express.json())
@@ -53,6 +54,10 @@ async function run() {
 
 
         });
+
+        
+      
+
         app.post('/reviews',async(req,res)=>{
           const newreviews=req.body;
           
@@ -76,6 +81,17 @@ async function run() {
             const item=await collection.findOne(query);
             console.log(item);
             res.send(item);
+    
+    
+          });
+
+        app.get('/orders/:id',async(req,res)=>{
+            const id=req.params.id;
+            const query={_id:ObjectId(id)};
+            console.log(query);
+            const result=await Orderscollection.findOne(query);
+            console.log(result);
+            res.send(result);
     
     
           });
@@ -105,6 +121,8 @@ async function run() {
     
     
           });
+
+          
 
 
 
