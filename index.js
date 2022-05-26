@@ -62,6 +62,15 @@ async function run() {
     
     
           });
+          // deleted...........
+          app.delete('/orders/:id',async(req,res)=>{
+            const id=req.params.id;
+            const query={_id:ObjectId(id)};
+            const deletorder=await Orderscollection.deleteOne(query);
+            res.send(deletorder);
+    
+    
+          });
 
 
 
